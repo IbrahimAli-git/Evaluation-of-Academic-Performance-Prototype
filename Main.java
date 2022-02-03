@@ -1,3 +1,5 @@
+package com.company;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -42,21 +44,19 @@ public class Main {
 
                 Statement statement = connection.createStatement();
 
-                int value = 99;
+                int value = (attendance + courseWorkMarks + examinationMarks) / 3;
 
-                String insertion = "INSERT INTO tbl1_software_projects(student_overall_performance) VALUES(" + value + ")";
+                /*String insertion = "INSERT INTO tbl1_software_projects(student_overall_performance) VALUES(" + value + ")";
 
-                statement.executeUpdate(insertion);
+                statement.executeUpdate(insertion);*/
 
-                ResultSet resultSet = statement.executeQuery("SELECT * FROM tbl1_software_projects WHERE student_overall_performance = " + value);
+                ResultSet resultSet = statement.executeQuery("SELECT * FROM tbl1_software_projects WHERE student_id = " + 2);
 
                 while (resultSet.next()) {
                     System.out.println(resultSet.getInt(1));
                 }
 
                 connection.close();
-
-
             }
         } catch (Exception e){
             e.printStackTrace();
